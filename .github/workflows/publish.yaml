@@ -164,6 +164,9 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
       - uses: gradle/actions/setup-gradle@v4
 
+      - name: Install GPG
+        run: brew install gpg
+
       - name: Deploy
         env:
           MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
@@ -196,4 +199,4 @@ jobs:
           export ORG_GRADLE_PROJECT_signingInMemoryKeyId="${signing_key_id}"
           export ORG_GRADLE_PROJECT_signingInMemoryKeyPassword="${signing_password}"
           export ORG_GRADLE_PROJECT_signingInMemoryKey="${signing_key}"
-          ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
+          ./gradlew :inspektor:publishAndReleaseToMavenCentral --no-configuration-cache
