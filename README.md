@@ -5,10 +5,22 @@
 </div>
 
 # Inspektor 🕵️‍♂️
-![main status](https://github.com/ShreyashKore/inspektor/actions/workflows/publish.yaml/badge.svg?branch=main)
-[![kotlin](https://img.shields.io/badge/Kotlin-2.0.21-8949FB.svg?style=flat&logo=kotlin)](https://kotlinlang.org/)
-[![kotlin](https://img.shields.io/badge/ktor-3.0.1-8949FB.svg?style=flat&logo=kotlin)](https://github.com/ktorio/ktor)
-[![latest version](https://img.shields.io/maven-central/v/com.gyanoba.inspektor/inspektor?color=blue&label=Version)](https://central.sonatype.com/artifact/com.gyanoba.inspektor/inspektor)
+![main status](https://github.com/ishumakov881/inspektor/actions/workflows/publish.yaml/badge.svg?branch=main)
+[![kotlin](https://img.shields.io/badge/Kotlin-2.2.0-8949FB.svg?style=flat&logo=kotlin)](https://kotlinlang.org/)
+[![kotlin](https://img.shields.io/badge/ktor-3.1.3-8949FB.svg?style=flat&logo=kotlin)](https://github.com/ktorio/ktor)
+[![latest version](https://img.shields.io/maven-central/v/io.github.ishumakov881/inspektor?color=blue&label=Version)](https://central.sonatype.com/artifact/io.github.ishumakov881/inspektor)
+
+> [!NOTE]
+> **Fork of [ShreyashKore/inspektor](https://github.com/ShreyashKore/inspektor)** published under a separate Maven coordinate for projects that need **`kotlinx-datetime` 0.7.1**.
+>
+> | | Upstream | This fork |
+> |---|---|---|
+> | Maven | `com.gyanoba.inspektor:inspektor` | [`io.github.ishumakov881:inspektor`](https://central.sonatype.com/artifact/io.github.ishumakov881/inspektor) |
+> | `kotlinx-datetime` | `0.8.0-0.6.x-compat` | **`0.7.1`** (strict, exposed as `api`) |
+> | Retention clock | `kotlinx.datetime.Clock` | `kotlin.time.Clock` + `kotlinx.datetime.Instant` in storage |
+> | Repository | [ShreyashKore/inspektor](https://github.com/ShreyashKore/inspektor) | [ishumakov881/inspektor](https://github.com/ishumakov881/inspektor) |
+>
+> Do **not** mix `com.gyanoba.inspektor` and `io.github.ishumakov881:inspektor` in the same dependency graph.
 
 > [!CAUTION]
 > This library is **not stable**, and the API may change. It is not advised to use it in
@@ -28,9 +40,11 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    implementation("com.gyanoba.inspektor:inspektor:latest-version")
+    implementation("io.github.ishumakov881:inspektor:0.3.16")
 }
 ```
+
+Maven Central: https://central.sonatype.com/artifact/io.github.ishumakov881/inspektor
 
 ## Usage
 
