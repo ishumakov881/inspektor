@@ -12,7 +12,7 @@ import kotlin.time.Duration.Companion.minutes
 internal class RetentionManager(
     private val retentionDuration: Duration,
     private val dataSource: InspektorDataSource,
-    private val clock: Clock = Clock.System,
+    private val clock: Clock = kotlin.time.Clock.System,
 ) {
     private val mutex = Mutex()
 

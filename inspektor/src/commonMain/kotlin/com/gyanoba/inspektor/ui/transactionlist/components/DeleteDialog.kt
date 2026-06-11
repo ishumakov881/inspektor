@@ -50,7 +50,7 @@ internal fun DeleteDialog(
                     onConfirm(
                         datePickerState.selectedDateInstant
                             ?.atLocalStartOfDay(TimeZone.currentSystemDefault())
-                            ?: Clock.System.now()
+                            ?: kotlin.time.Clock.System.now()
                     )
                     onDismissRequest()
                 }

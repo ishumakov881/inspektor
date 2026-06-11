@@ -43,9 +43,9 @@ internal class TransactionListViewModel(
     private val fileSharer: FileSharer,
 ) : ViewModel() {
 
-    private val _startDate = MutableStateFlow((Clock.System.now() - 6.days).atLocalStartOfDay())
+    private val _startDate = MutableStateFlow((kotlin.time.Clock.System.now() - 6.days).atLocalStartOfDay())
     val startDate = _startDate.asStateFlow()
-    private val _endDate = MutableStateFlow(Clock.System.now().atLocalEndOfDay())
+    private val _endDate = MutableStateFlow(kotlin.time.Clock.System.now().atLocalEndOfDay())
     val endDate = _endDate.asStateFlow()
 
     private val _events: MutableStateFlow<UiEvent> = MutableStateFlow(UiEvent.NoEvent)

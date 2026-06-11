@@ -29,11 +29,12 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
+    val iosX64 = iosX64()
     val iosArm64 = iosArm64()
     val iosSimulatorArm64 = iosSimulatorArm64()
 
     val appleTargets = listOf(
-        iosArm64, iosSimulatorArm64,
+        iosX64, iosArm64, iosSimulatorArm64,
     )
 
     appleTargets.forEach { target ->
@@ -49,6 +50,9 @@ kotlin {
         all {
             languageSettings {
                 optIn("org.jetbrains.compose.resources.ExperimentalResourceApi")
+                optIn("kotlin.time.ExperimentalTime")
+                optIn("kotlinx.datetime.ExperimentalKotlinxDateTimeApi")
+
             }
         }
         val commonMain by getting {
@@ -65,11 +69,10 @@ kotlin {
                 implementation(libs.sqlDelight.coroutines.extensions)
                 implementation(libs.paging.compose.common)
                 implementation(libs.androidx.paging3.extensions)
-                implementation(libs.kotlinx.atomicfu)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kotlinx.serialization.json.io)
-                implementation(libs.kotlinx.datetime)
+                api(libs.kotlinx.datetime)
                 implementation(libs.ktor.core)
                 implementation(libs.multiplatformSettings)
                 implementation(libs.ktor.client.logging)
@@ -85,8 +88,6 @@ kotlin {
                 implementation(compose.uiTest)
                 implementation(libs.kotlinx.coroutines.test)
                 implementation(libs.ktor.client.mock)
-                implementation(libs.ktor.client.content.negotiation)
-                implementation(libs.ktor.serialization.kotlinx.json)
             }
         }
 

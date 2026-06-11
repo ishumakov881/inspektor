@@ -31,7 +31,7 @@ internal fun App() = InspektorTheme {
             )
         }
         composable("transaction/{id}") { backStackEntry ->
-            val id = backStackEntry.savedStateHandle.get<String>("id")?.toLongOrNull()
+            val id = backStackEntry.arguments?.getString("id")?.toLongOrNull()
             if (id != null) {
                 TransactionDetailsScreen(
                     id,
@@ -59,7 +59,7 @@ internal fun App() = InspektorTheme {
         }
 
         composable("edit-override/{id}") { backStackEntry ->
-            val id = backStackEntry.savedStateHandle.get<String>("id")?.toLongOrNull()
+            val id = backStackEntry.arguments?.getString("id")?.toLongOrNull()
             EditOverrideScreen(
                 overrideId = id ?: 0,
                 onBack = {
@@ -73,7 +73,7 @@ internal fun App() = InspektorTheme {
                 type = NavType.StringType; defaultValue = null; nullable = true
             })
         ) { backStackEntry ->
-            val transactionId = backStackEntry.savedStateHandle.get<String>("transactionId")?.toLongOrNull()
+            val transactionId = backStackEntry.arguments?.getString("transactionId")?.toLongOrNull()
             EditOverrideScreen(
                 overrideId = 0,
                 onBack = {

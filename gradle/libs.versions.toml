@@ -3,32 +3,32 @@ android-minSdk = "24"
 android-compileSdk = "36"
 
 # dependencies versions
-agp = "8.13.2"
-kotlin = "2.3.21"
-publish = "0.36.0"
-androidxPaging3Extensions = "2.3.2"
-atomicfuGradlePlugin = "0.32.1"
-mokkery = "3.3.0"
-kotlinx-coroutines = "1.11.0"
-kotlinx-serialization = "1.11.0"
-compose = "1.11.0"
-androidx-activityCompose = "1.13.0"
-androidx-uiTest = "1.11.1"
+agp = "8.11.0"
+kotlin = "2.2.0"
+publish = "0.33.0"
+androidxPaging3Extensions = "2.1.0"
+atomicfuGradlePlugin = "0.27.0"
+mokkery = "2.9.0"
+kotlinx-coroutines = "1.10.2"
+kotlinx-serialization = "1.9.0"
+compose = "1.8.2"
+androidx-activityCompose = "1.10.1"
+androidx-uiTest = "1.8.3"
 napier = "2.7.1"
-kotlinx-datetime = "0.8.0-0.6.x-compat"
+kotlinx-datetime = "0.7.1"
 kermit = "2.0.0-RC5"
-ktor = "3.5.0"
+ktor = "3.1.3"
 pagingComposeCommon = "3.3.0-alpha02-0.5.1"
-sqlDelight = "2.3.2"
-sqlDelightCoroutinesExtensions = "2.3.2"
+sqlDelight = "2.1.0"
+sqlDelightCoroutinesExtensions = "2.1.0"
 multiplatformSettings = "1.3.0"
 startupRuntime = "1.2.0"
-lifecycle = "2.10.0"
-androidx-navigation = "2.9.2"
-jsontree = "2.6.0"
+lifecycle = "2.9.1"
+androidx-navigation = "2.8.0-alpha13"
+jsontree = "2.5.0"
 kstore = "1.0.0"
-bcv = "0.18.1"
-kover = "0.9.8"
+bcv = "0.18.0"
+kover = "0.9.1"
 statelyCommon = "2.1.0"
 material-icons = "1.7.3"
 
@@ -45,7 +45,6 @@ androidx-startup-runtime = { module = "androidx.startup:startup-runtime", versio
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "atomicfuGradlePlugin" }
-kotlinx-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfuGradlePlugin" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
@@ -56,7 +55,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json-io = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-io", version.ref = "kotlinx-serialization" }
-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = { strictly = "0.7.1" } }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }

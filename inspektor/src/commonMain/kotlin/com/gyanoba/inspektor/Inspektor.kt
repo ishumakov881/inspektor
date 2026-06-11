@@ -27,9 +27,9 @@ import com.gyanoba.inspektor.utils.typeAndSubType
 import io.ktor.client.plugins.api.ClientPlugin
 import io.ktor.client.plugins.api.ClientPluginBuilder
 import io.ktor.client.plugins.api.createClientPlugin
-import io.ktor.client.call.replaceResponse
 import io.ktor.client.plugins.observer.ResponseHandler
 import io.ktor.client.plugins.observer.ResponseObserver
+import io.ktor.client.plugins.observer.wrap
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
@@ -252,7 +252,7 @@ public val Inspektor: ClientPlugin<InspektorConfig> = createClientPlugin(
             requestHeadersSize = request.headers.build().approxByteCount(),
             requestContentType = request.contentType()?.typeAndSubType,
             requestPayloadSize = content.contentLength,
-            requestDate = Clock.System.now()
+            requestDate = kotlin.time.Clock.System.now()
         )
 
         if (level.headers) {
@@ -303,7 +303,7 @@ public val Inspektor: ClientPlugin<InspektorConfig> = createClientPlugin(
             responseContentType = response.contentType()?.typeAndSubType,
             responsePayloadSize = response.contentLength(),
             responseHeadersSize = response.headers.approxByteCount(),
-            responseDate = Clock.System.now()
+            responseDate = kotlin.time.Clock.System.now()
         )
 
         try {
@@ -333,13 +333,13 @@ public val Inspektor: ClientPlugin<InspektorConfig> = createClientPlugin(
                         var originalBody: String? = null
                         val originalHeaders = mutableMapOf<String, List<String>>()
 
-                        val newBody: String? = override.action.responseBody?.takeIf { it.isNotEmpty() }?.let { newBodyString ->
+                        val newBody: ByteReadChannel? = override.action.responseBody?.takeIf { it.isNotEmpty() }?.let { newBodyString ->
                             originalBody = response.rawContent.tryReadText(
                                 response.charset() ?: Charsets.UTF_8, pluginConfig.maxContentLength
                             )?.run {
                                 substring(0..minOf(lastIndex, pluginConfig.maxContentLength))
                             }
-                            newBodyString
+                            ByteReadChannel(newBodyString)
                         }
 
                         val newHeaders =
@@ -372,9 +372,10 @@ public val Inspektor: ClientPlugin<InspektorConfig> = createClientPlugin(
                             )
                         }
                         proceedWith(
-                            response.call.replaceResponse(headers = newHeaders ?: response.headers) {
-                                newBody?.let(::ByteReadChannel) ?: rawContent
-                            }.response
+                            response.call.wrap(
+                                content = newBody ?: response.rawContent,
+                                headers = newHeaders ?: response.headers
+                            ).response
                         )
                     }
 
