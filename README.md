@@ -40,7 +40,7 @@ Add the following dependency to your `build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    implementation("io.github.ishumakov881:inspektor:0.3.19")
+    implementation("io.github.ishumakov881:inspektor:0.3.20")
 }
 ```
 
