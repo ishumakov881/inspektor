@@ -17,7 +17,7 @@ plugins {
     alias(libs.plugins.mokkery)
 }
 
-group = "com.gyanoba.inspektor"
+group = project.properties["GROUP"]!!
 version = project.properties["VERSION_NAME"]!!
 
 kotlin {
@@ -137,6 +137,10 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+
+compose.resources {
+    packageOfResClass = "com.gyanoba.inspektor.inspektor.generated.resources"
 }
 
 fun Project.linkSqlite() {
